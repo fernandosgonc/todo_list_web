@@ -54,18 +54,16 @@ public class UserDAOTest {
 		System.out.println(u.toString());
 	}
 
-	@Test
+//	@Test
 	public void testSearch() {
 		String login = "fernandosgonc";
 		String password = "";
-		User u = new User();
-		u.setLogin(login);
-		u.setPassword(password);
+		User u = null;
 		
 		UserDAO dao;
 		try {
 			dao = new UserDAO();
-			u = dao.search(u);
+			u = dao.verifyLogin(login, password);
 			System.out.println(u);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -112,6 +110,19 @@ public class UserDAOTest {
 		}
 	}
 	
+	@Test
+	public void getSaltTest() {
+		
+		String login = "jeff2";
+		UserDAO dao = new UserDAO();
+		try {
+			String sal = dao.getSalt(login);
+			System.out.println(sal);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException();
+		}
+	}
 	
 	
 	
