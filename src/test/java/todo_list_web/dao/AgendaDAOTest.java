@@ -12,13 +12,13 @@ import todo_list_web.model.User;
 
 public class AgendaDAOTest {
 
-//	@Test
+	@Test
 	public void testCreate() {
 		
 		Agenda a = new Agenda();
 		User u = new User();
-		u.setId(5);
-		a.setName("Agenda 8");
+		u.setId(10);
+		a.setName("Teste4");
 		
 		AgendaDAO adao = new AgendaDAO();
 		try {
@@ -47,7 +47,7 @@ public class AgendaDAOTest {
 	}
 	
 	
-	@Test
+//	@Test
 	public void testEdit() {
 		Agenda ag = new Agenda();
 		ag.setName("Test");
@@ -62,11 +62,11 @@ public class AgendaDAOTest {
 		}
 	}
 	
-	@Test
+//	@Test
 	public void testRetriveAll() {
 		
 		User u = new User();
-		u.setId(6);
+		u.setId(10);
 		
 		try {
 			List<Agenda> list = new AgendaDAO().retrieveAll(u);
@@ -83,7 +83,7 @@ public class AgendaDAOTest {
 	}
 	
 	
-	@Test
+//	@Test
 	public void testRetrieve() {
 		
 	

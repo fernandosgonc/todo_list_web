@@ -6,6 +6,9 @@ import java.sql.SQLException;
 
 import org.junit.Test;
 
+import todo_list_web.dao.UserDAO;
+import todo_list_web.model.User;
+
 public class LoginValidatorTest {
 
 //	@Test
@@ -33,7 +36,7 @@ public class LoginValidatorTest {
 		
 	}
 	
-	@Test
+//	@Test
 	public void testSignUp() {
 		
 		String name = "José";
@@ -54,6 +57,23 @@ public class LoginValidatorTest {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException();
+		}
+		
+	}
+	
+	
+
+	@Test
+	public void authenticateTest() {
+		
+		String login = "jeff2";
+		String password = "123485";
+		try {
+			User u = LoginValidator.authenticate(login, password);
+			System.out.println(u);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 	}

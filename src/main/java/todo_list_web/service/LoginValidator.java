@@ -32,12 +32,12 @@ public class LoginValidator {
 	public static boolean isAvailable(String email, String login) throws SQLException {
 		
 		userDAO = new UserDAO();
-		User u = userDAO.verifyDisponibility(email, login);
+		boolean isAvailable = userDAO.verifyDisponibility(email, login);
 		
-		if(u!=null) {
-			return false;
-		}else {
+		if(isAvailable) {
 			return true;
+		}else {
+			return false;
 		}
 		
 	}
@@ -62,7 +62,7 @@ public class LoginValidator {
 
 	
 //	LOGIN
-	public User authenticate(String login, String password) throws SQLException {
+	public static User authenticate(String login, String password) throws SQLException {
 	
 		userDAO = new UserDAO();
 		String salt = userDAO.getSalt(login);
@@ -70,6 +70,8 @@ public class LoginValidator {
 		String hashedPassword = password;
 		if(salt!=null) {
 			hashedPassword = BCrypt.hashpw(password, salt);	
+		}else {
+			System.out.println("usuario nao encontrado");
 		}
 		
 		User user = userDAO.verifyLogin(login, hashedPassword);
