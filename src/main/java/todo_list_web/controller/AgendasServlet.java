@@ -15,33 +15,35 @@ import todo_list_web.model.Agenda;
 import todo_list_web.model.User;
 import todo_list_web.service.Interactor;
 
-@WebServlet(urlPatterns = {"/agendas"})
-public class AgendasServlet extends HttpServlet{
+@WebServlet(urlPatterns = { "/agendas" })
+public class AgendasServlet extends HttpServlet {
 
-	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		User owner = (User) req.getSession().getAttribute("loggedUser");
 		try {
-			if(owner!=null) {
-				
+			if (owner != null) {
+
 				List<Agenda> agendas = Interactor.getUserAgendas(owner);
-				if(agendas!=null) {
-					req.getSession().setAttribute("agendas", agendas);
-					resp.sendRedirect("restrict/agendas.jsp");
-				}else {
+				if (agendas != null) {
+//					req.getSession().setAttribute("agendas", agendas);
+//					resp.sendRedirect("restrict/agendas.jsp");
+					req.setAttribute("agendas", agendas);
+					RequestDispatcher rd = req.getRequestDispatcher("restrict/lista.jsp");
+					rd.forward(req, resp);
+					
+				} else {
 					resp.getWriter().print("You don't have any agendas :(");
 				}
-			}else {
+			} else {
 				RequestDispatcher rd = req.getRequestDispatcher("login");
 				rd.forward(req, resp);
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-	
+
 	}
 }

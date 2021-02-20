@@ -19,7 +19,7 @@
     <main>
         <h2>What would you like to do?</h2>
         <a href="login.jsp">Sign in</a><br>
-        <a href="register.jsp">Sign up</a>
+        <a href="signup.jsp">Sign up</a>
         
     </main>
 </body>

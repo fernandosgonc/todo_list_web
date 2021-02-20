@@ -14,19 +14,40 @@ import javax.servlet.http.HttpSession;
 import todo_list_web.model.User;
 import todo_list_web.service.LoginValidator;
 
-@WebServlet(urlPatterns = { "/home", "/login" })
+@WebServlet(urlPatterns = { "/home", "/login", "/signup" })
 public class LoginServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		RequestDispatcher rd = req.getRequestDispatcher("homepage.jsp");
-		rd.forward(req, resp);
+		String URI = req.getRequestURI();
+		
+		if (URI.endsWith("/home")) {
+			resp.sendRedirect("homepage.jsp");
+			
+		} else if (URI.endsWith("/login")) {
+			resp.sendRedirect("login.jsp");
+			
+		} else if (URI.endsWith("/signup")) {
+			resp.sendRedirect("signup.jsp");
+		}
 
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		String URI = req.getRequestURI();
+		
+		if (URI.endsWith("/login")) {
+			login(req, resp);
+		} else if (URI.endsWith("/signup")) {
+			signup(req, resp);
+		}
+		
+	}
+
+	public void login(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		String login = req.getParameter("username");
 		String password = req.getParameter("password");
 
@@ -36,14 +57,12 @@ public class LoginServlet extends HttpServlet {
 
 				User user = LoginValidator.authenticate(login, password);
 				if (user != null) {
-					
+
 					HttpSession session = req.getSession();
 					session.setAttribute("loggedUser", user);
 
 					resp.sendRedirect("agendas");
-//					RequestDispatcher rd = req.getRequestDispatcher("agendas");
-//					rd.forward(req, resp);
-					
+
 				} else {
 					resp.sendRedirect("login.jsp");
 				}
@@ -53,7 +72,28 @@ public class LoginServlet extends HttpServlet {
 		} else {
 			resp.sendRedirect("login.jsp");
 		}
+	}
 
+	public void signup(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String name = req.getParameter("name");
+		String email = req.getParameter("email");
+		String login = req.getParameter("username");
+		String password = req.getParameter("password");
+		String gender = req.getParameter("gender");
+
+		try {
+			LoginValidator.register(name, email, login, password, gender.charAt(0));
+			
+			//log in after registration
+			req.setAttribute("login", login);
+			req.setAttribute("password", password);
+			RequestDispatcher rd = req.getRequestDispatcher("login");
+			rd.forward(req, resp);
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

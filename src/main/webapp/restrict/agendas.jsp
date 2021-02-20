@@ -14,10 +14,11 @@
 <body>
 
 	<header>
-	<%User currentUser = (User) session.getAttribute("loggedUser");
-			out.print("<h1>Here are your agendas, "+currentUser.getName()+"</h1>");
-		 %>
-		
+		<%
+		User currentUser = (User) session.getAttribute("loggedUser");
+		out.print("<h1>Here are your agendas, " + currentUser.getName() + "</h1>");
+		%>
+
 	</header>
 
 	<main>
@@ -27,32 +28,49 @@
 				<th>Id</th>
 				<th>Name</th>
 				<th>Creation date</th>
+				<th>See tasks</th>
 			</thead>
 
 			<tbody>
 				<%
-		List<Agenda> agendas = (List<Agenda>) session.getAttribute("agendas");
-		for(Agenda a: agendas){ %>
+				List<Agenda> agendas = (List<Agenda>) session.getAttribute("agendas");
+				for (Agenda a : agendas) {
+				%>
 
 				<tr>
 					<td>
-						<%out.print(a.getId()); %>
+						<%
+						out.print(a.getId());
+						%>
 					</td>
 					<td>
-						<%out.print(a.getName()); %>
+						<%
+						out.print(a.getName());
+						%>
 					</td>
 					<td>
-						<%out.print(a.getCreationDate()); %>
+						<%
+						out.print(a.getCreationDate());
+						%>
+					</td>
+					<td>
+						<%--<% session.setAttribute("currentAgenda", a);--%> <%
+ String url = "../tasks?agenda_id=" + a.getId();
+ %>
+						<a href="<%=url%>">Open</a>
 					</td>
 				</tr>
-				<% } %>
+				<%
+				}
+				%>
 			</tbody>
 
 		</table>
 
+		<a href="signout.jsp">Sign out</a>
 	</main>
 
-		
+
 
 
 
