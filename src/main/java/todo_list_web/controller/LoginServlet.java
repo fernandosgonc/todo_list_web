@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import todo_list_web.model.User;
 import todo_list_web.service.LoginValidator;
 
-@WebServlet(urlPatterns = { "/home", "/login", "/signup" })
+@WebServlet(urlPatterns = { "/home", "/login", "/signup", "/signout" })
 public class LoginServlet extends HttpServlet {
 
 	@Override
@@ -30,6 +30,9 @@ public class LoginServlet extends HttpServlet {
 			
 		} else if (URI.endsWith("/signup")) {
 			resp.sendRedirect("signup.jsp");
+			
+		}else if (URI.endsWith("/signout")) {
+			resp.sendRedirect("signout.jsp");
 		}
 
 	}

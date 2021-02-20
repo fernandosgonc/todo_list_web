@@ -9,7 +9,7 @@
 </head>
 <body>
 <jsp:include page="../header.jsp"/>
-<h2>Hey ${sessionScope.loggedUser.name}, those are your tasks</h2>
+<h2>Welcome ${sessionScope.loggedUser.name}, here are all of your tasks</h2>
 
 <table border="1">
 <tr>
@@ -19,7 +19,7 @@
 <th>Deadline</th>
 <th>Status</th>
 </tr>
-<c:forEach var="task" items="${tasks}">
+<c:forEach var="task" items="${allTasks}">
 <tr>
 <td>${task.id}</td>
 <td>${task.name}</td>

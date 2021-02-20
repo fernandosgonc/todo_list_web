@@ -11,6 +11,7 @@ import java.util.List;
 import todo_list_web.factory.ConnectionFactory;
 import todo_list_web.model.Agenda;
 import todo_list_web.model.Task;
+import todo_list_web.model.User;
 
 public class TaskDAO {
 
@@ -72,7 +73,7 @@ public class TaskDAO {
 
 	}
 
-	public List<Task> retrieveAll(Agenda agenda) throws SQLException {
+	public List<Task> retrieveAllFromAgenda(Agenda agenda) throws SQLException {
 
 		con = ConnectionFactory.getConnection();
 
@@ -90,6 +91,42 @@ public class TaskDAO {
 			t.setName(rs.getString("task_name"));
 			t.setDeadline(rs.getObject("deadline", LocalDate.class));
 			t.setCategory(rs.getString("category"));
+			t.setDone(rs.getBoolean("status"));
+			list.add(t);
+		}
+
+		if (rs != null) {
+			rs.close();
+		}
+		if (ps != null) {
+			ps.close();
+		}
+		if (con != null) {
+			con.close();
+		}
+
+		return list;
+
+	}
+	
+	public List<Task> retrieveAllFromUser(User owner) throws SQLException {
+
+		con = ConnectionFactory.getConnection();
+
+		String sql = "select t.task_id, t.task_name, t.category, t.deadline, t.status from task t join agenda a on t.agenda_id = a.agenda_id join user u on a.user_id = u.user_id where u.user_id=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, owner.getId());
+
+		ResultSet rs = ps.executeQuery();
+
+		List<Task> list = new ArrayList<Task>();
+		Task t = null;
+		while (rs.next()) {
+			t = new Task();
+			t.setId(rs.getInt("task_id"));
+			t.setName(rs.getString("task_name"));
+			t.setCategory(rs.getString("category"));
+			t.setDeadline(rs.getObject("deadline", LocalDate.class));
 			t.setDone(rs.getBoolean("status"));
 			list.add(t);
 		}

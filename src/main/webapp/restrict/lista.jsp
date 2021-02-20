@@ -5,13 +5,20 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>AGENDAS</title>
 </head>
 <body>
+
+<jsp:include page="../header.jsp"/>
 
 <h2>Welcome ${sessionScope.loggedUser.name}, here are your agendas</h2>
 
 <table border="1">
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Creation Date</th>
+</tr>
 <c:forEach var="agenda" items="${agendas}">
 <tr>
 <td>${agenda.id}</td>

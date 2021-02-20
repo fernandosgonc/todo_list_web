@@ -9,7 +9,7 @@
     <title>Register</title>
 </head>
 <body>
-    
+    <jsp:include page="header.jsp"/>
 <h2>
     Register in our system in order to get access to it.
 </h2>

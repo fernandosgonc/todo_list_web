@@ -9,7 +9,7 @@
     <title>Login</title>
 </head>
 <body>
-    
+    <jsp:include page="header.jsp"/>
     <header>
         <h1>WELCOME. <br>Sign in to get access to our features</h1>
     </header>

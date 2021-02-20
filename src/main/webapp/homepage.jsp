@@ -12,14 +12,15 @@
 
 <body>
 
+    	<jsp:include page="header.jsp"/>
     <header>
         <h1>WELCOME TO OUR SYSTEM! :)</h1>
     </header>
 
     <main>
         <h2>What would you like to do?</h2>
-        <a href="login.jsp">Sign in</a><br>
-        <a href="signup.jsp">Sign up</a>
+        <a href="login">Sign in</a><br>
+        <a href="signup">Sign up</a>
         
     </main>
 </body>

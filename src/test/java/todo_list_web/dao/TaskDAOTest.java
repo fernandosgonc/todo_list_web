@@ -52,7 +52,7 @@ public class TaskDAOTest {
 		Agenda a = new Agenda();
 		a.setId(6);
 		try {
-			List<Task> list = new TaskDAO().retrieveAll(a);
+			List<Task> list = new TaskDAO().retrieveAllFromAgenda(a);
 
 			for (Task t : list) {
 				System.out.println(t);
