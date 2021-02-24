@@ -53,7 +53,7 @@ public class TaskServlet extends HttpServlet {
 		String category = req.getParameter("category");
 		String deadline = req.getParameter("deadline");
 		String status = req.getParameter("status");
-		String agendaId = req.getParameter("agenda");
+		String agendaId = req.getParameter("agendaId");
 		try {
 			
 			Interactor.addTask(name, category, deadline, status, agendaId);
@@ -70,6 +70,7 @@ public class TaskServlet extends HttpServlet {
 			try {
 				Agenda a = Interactor.getAgenda(agendaId);
 				List<Task> tasksList = Interactor.getAgendaTasks(a);
+				req.setAttribute("agenda", a);
 				req.setAttribute("tasks", tasksList);
 				RequestDispatcher rd = req.getRequestDispatcher("restrict/listatasks.jsp");
 				rd.forward(req, resp);

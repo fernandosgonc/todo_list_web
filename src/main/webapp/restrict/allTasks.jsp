@@ -23,7 +23,7 @@
 <option value="1">Done</option>
 </select>
 
-<select name="agenda">
+<select name="agendaId">
 <c:forEach var="ag" items="${allAgendas}">
 <option value="${ag.id}">${ag.name}</option>
 </c:forEach>
