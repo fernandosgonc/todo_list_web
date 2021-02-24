@@ -73,9 +73,11 @@ public class TaskDAOTest {
 		t.setCategory("Edit");
 		t.setDone(false);
 
+		Agenda a = new Agenda();
+		a.setId(9);
 		TaskDAO dao = new TaskDAO();
 		try {
-			dao.edit(t);
+			dao.update(t, a);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException();

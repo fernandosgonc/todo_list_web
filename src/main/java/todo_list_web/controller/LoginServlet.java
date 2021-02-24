@@ -85,7 +85,7 @@ public class LoginServlet extends HttpServlet {
 		String gender = req.getParameter("gender");
 
 		try {
-			LoginValidator.register(name, email, login, password, gender.charAt(0));
+			LoginValidator.register(name, email, login, password, gender);
 			
 			//log in after registration
 			req.setAttribute("login", login);

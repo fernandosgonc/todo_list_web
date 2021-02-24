@@ -146,17 +146,48 @@ public class TaskDAO {
 	}
 
 	
-	public void edit(Task task) throws SQLException {
+public Agenda retrieveAgendaRelatedToTask(Task task) throws SQLException {
+	con = ConnectionFactory.getConnection();
+
+	String sql = "select a.agenda_id, a.agenda_name from agenda a join task t on t.agenda_id = a.agenda_id where t.task_id=?";
+	PreparedStatement ps = con.prepareStatement(sql);
+	ps.setInt(1, task.getId());
+
+	ResultSet rs = ps.executeQuery();
+
+	Agenda agenda = null;
+	if(rs.next()) {
+		agenda = new Agenda();
+		agenda.setId(rs.getInt("agenda_id"));
+		agenda.setName(rs.getString("agenda_name"));
+	}
+	
+
+	if (rs != null) {
+		rs.close();
+	}
+	if (ps != null) {
+		ps.close();
+	}
+	if (con != null) {
+		con.close();
+	}
+
+	return agenda;
+}
+	
+	public void update(Task task, Agenda newAgenda) throws SQLException {
 
 		con = ConnectionFactory.getConnection();
 
-		String sql = "update task set task_name=?, category=?, deadline=?, status=? where task_id=?";
+		String sql = "update task set task_name=?, category=?, deadline=?, status=?, agenda_id=? where task_id=?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, task.getName());
 		ps.setString(2, task.getCategory());
 		ps.setObject(3, task.getDeadline());
 		ps.setBoolean(4, task.isDone());
-		ps.setInt(5, task.getId());
+		ps.setInt(5, newAgenda.getId());
+		ps.setInt(6, task.getId());
 
 		int rows = ps.executeUpdate();
 		System.out.println(rows+" affected");

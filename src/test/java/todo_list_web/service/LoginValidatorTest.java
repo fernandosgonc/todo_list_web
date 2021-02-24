@@ -28,7 +28,7 @@ public class LoginValidatorTest {
 	public void testRegister() {
 		
 		try {
-			LoginValidator.register("José", "jose@mail.com", "josefsg", "12345", 'O');
+			LoginValidator.register("José", "jose@mail.com", "josefsg", "12345", "O");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException();
@@ -43,7 +43,7 @@ public class LoginValidatorTest {
 		String email = "jeff@gmail.com";
 		String login = "jeff2";
 		String password = "12345";
-		char gender = 'M';
+		String gender = "M";
 		
 		try {
 			boolean av = LoginValidator.isAvailable(email, login);

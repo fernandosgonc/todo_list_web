@@ -6,12 +6,26 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>AGENDAS</title>
+
+
+<script type="text/javascript">
+
+</script>
+
 </head>
 <body>
 
 <jsp:include page="../header.jsp"/>
 
 <h2>Welcome ${sessionScope.loggedUser.name}, here are your agendas</h2>
+
+
+<button onclick="document.getElementById('createForm').style.display = 'block' ">Create</button> <br>
+
+<form id="createForm" action="createAgenda" style="display: none" method="post">
+<input type="text" name="name">
+<input type="submit" value="Submit" onclick="document.getElementById('createForm').style.display = 'none' ">
+</form> <br>
 
 <table border="1">
 <tr>
@@ -25,9 +39,13 @@
 <td>${agenda.name}</td>
 <td>${agenda.creationDate}</td>
 <td><a href="tasks?agenda_id=${agenda.id}">Open</a></td>
+<td><a href="editAgenda?agenda_id=${agenda.id}">Edit</a></td>
+<td><a href="deleteAgenda?agenda_id=${agenda.id}">Delete</a></td>
 </tr>
 </c:forEach>
 </table>
+
+
 
 </body>
 </html>

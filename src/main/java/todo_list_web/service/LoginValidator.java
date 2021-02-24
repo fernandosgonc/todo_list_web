@@ -42,7 +42,7 @@ public class LoginValidator {
 		
 	}
 
-	public static void register(String name, String email, String login, String password, char gender) throws SQLException {
+	public static void register(String name, String email, String login, String password, String gender) throws SQLException {
 		
 		String salt = BCrypt.gensalt();
 		String hashedPassword = BCrypt.hashpw(password, salt);
@@ -52,7 +52,7 @@ public class LoginValidator {
 		user.setEmail(email);
 		user.setLogin(login);
 		user.setPassword(hashedPassword);
-		user.setGender(gender);
+		user.setGender(gender.charAt(0));
 		user.setSalt(salt);
 		
 		userDAO = new UserDAO();
