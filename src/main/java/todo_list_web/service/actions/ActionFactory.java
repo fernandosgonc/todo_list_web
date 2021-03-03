@@ -24,6 +24,8 @@ public class ActionFactory {
 		map.put("GET/delete", new DeleteTaskAction());
 		map.put("POST/addTask", new AddTaskAction());
 		map.put("GET/viewTask", new RetriveTaskAction());
+		map.put("GET/allTasks", new RetrieveAllTasksAction());
+		
 		
 		
 	}
