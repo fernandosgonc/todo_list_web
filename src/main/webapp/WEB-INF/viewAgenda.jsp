@@ -13,10 +13,21 @@
 
 
 <h2>${agenda.name}</h2>
+<button onclick="document.getElementById('editAgendaForm').style.display = 'block' ">Edit Agenda</button> <br>
+<a href="deleteAgenda?agenda_id=${agenda.id}">Delete</a>
 <hr>
 
 
-<button onclick="document.getElementById('addForm').style.display = 'block' ">Add</button> <br>
+
+
+<form id="editAgendaForm" action="editAgenda" style="display: none" method="post">
+<input type="hidden" name="agenda_id" value="${agenda.id}">
+<input type="text" name="name">
+<input type="submit" value="Submit" onclick="document.getElementById('editAgendaForm').style.display = 'none' ">
+</form> 
+
+
+<button onclick="document.getElementById('addForm').style.display = 'block' ">Add Task</button> <br>
 
 <form id="addForm" action="addTask" style="display: none" method="post">
 <input type="hidden" name="agenda" value="${agenda.id}">
@@ -52,8 +63,9 @@
 				<c:if test="${task.done == false}">
 					<td>Undone</td>
 				</c:if>
-				<td><a href="edit?task_id=${task.id}">Edit</a></td>
-				<td><a href="delete?task_id=${task.id}">Delete</a></td>
+				<!-- <td><a href="edit?task_id=${task.id}">Edit</a></td>
+				<td><a href="delete?task_id=${task.id}">Delete</a></td> -->
+				<td><a href="viewTask?task_id=${task.id}">See</a></td>
 			</tr>
 		</c:forEach>
 	</table>

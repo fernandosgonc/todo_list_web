@@ -32,8 +32,8 @@
 				<td>${agenda.name}</td>
 				<td>${agenda.creationDate}</td>
 				<td><a href="open?agenda_id=${agenda.id}">Open</a></td>
-				<td><a href="edit?agenda_id=${agenda.id}">Edit</a></td>
-				<td><a href="deleteAgenda?agenda_id=${agenda.id}">Delete</a></td>
+				<!--  <td><a href="edit?agenda_id=${agenda.id}">Edit</a></td>
+				<td><a href="deleteAgenda?agenda_id=${agenda.id}">Delete</a></td>-->
 			</tr>
 		</c:forEach>
 	</table>

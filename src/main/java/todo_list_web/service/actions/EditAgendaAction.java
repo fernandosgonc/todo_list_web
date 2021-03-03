@@ -23,7 +23,7 @@ public class EditAgendaAction implements Action{
 		AgendaDAO dao = new AgendaDAO();
 		dao.edit(agenda);
 		
-		return "agendas";
+		return "open?agenda_id="+agendaId;
 		
 	}
 

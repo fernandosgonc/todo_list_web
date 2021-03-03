@@ -21,6 +21,10 @@ public class ActionFactory {
 		map.put("POST/editAgenda", new EditAgendaAction());
 		map.put("GET/open", new OpenAgendaAction());
 		map.put("POST/editTask", new EditTaskAction());
+		map.put("GET/delete", new DeleteTaskAction());
+		map.put("POST/addTask", new AddTaskAction());
+		map.put("GET/viewTask", new RetriveTaskAction());
+		
 		
 	}
 	

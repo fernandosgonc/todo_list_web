@@ -28,7 +28,8 @@ public class OpenAgendaAction implements Action{
 		if(taskList!=null) {
 			req.setAttribute("agenda", agenda);
 			req.setAttribute("taskList", taskList);
-			return "/WEB-INF/viewTasks.jsp";
+			return "/WEB-INF/viewAgenda.jsp";
+//			return "/WEB-INF/viewTasks.jsp";
 		}else {
 			req.setAttribute("error", "You don't have any tasks in this agenda");
 			return "error";
