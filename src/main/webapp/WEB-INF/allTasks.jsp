@@ -52,8 +52,7 @@
 				<c:if test="${task.done == false}">
 					<td>Undone</td>
 				</c:if>
-				<td><a href="edit?task_id=${task.id}">Edit</a></td>
-				<td><a href="delete?task_id=${task.id}">Delete</a></td>
+				<td><a href="viewTask?task_id=${task.id}">See</a></td>
 			</tr>
 		</c:forEach>
 	</table>

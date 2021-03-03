@@ -11,13 +11,13 @@
 <body>
 	<jsp:include page="../header.jsp" />
 
+			<button onclick="document.getElementById('editTaskForm').style.display = 'block' ">Edit</button>
+			<a href="delete?task_id=${task.id}">Delete</a>
+		<hr>
 
 	<table border="1">
 	
-		<tr>
-			<td><button onclick="document.getElementById('editTaskForm').style.display = 'block' ">Edit</button></td>
-			<td><a href="delete?task_id=${task.id}">Delete</a></td>
-		</tr>
+		
 	
 		<tr>
 			<td>Name</td>
