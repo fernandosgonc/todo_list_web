@@ -37,11 +37,6 @@ public class SignUpAction implements Action {
 		userDAO.add(user);
 		String ret = "";
 		try{
-			
-			//do the login
-//			req.setAttribute("login", login);
-//			req.setAttribute("password", password);
-//			req.getRequestDispatcher("signin").forward(req, resp);
 			ret = "signin";
 		}catch (Exception e) {
 			ret = req.getContextPath()+"signup2.jsp";
