@@ -16,7 +16,6 @@ public class ActionFactory {
 		map.put("GET/signout", new SignOutAction());
 		map.put("GET/agendas", new ListAgendasAction());
 		map.put("GET/deleteAgenda", new DeleteAgendaAction());
-		map.put("GET/edit", new PrepareEditAction());
 		map.put("GET/viewAgenda", new ViewAgendaAction());
 		map.put("GET/delete", new DeleteTaskAction());
 		map.put("GET/viewTask", new RetriveTaskAction());
