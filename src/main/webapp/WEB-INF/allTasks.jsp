@@ -8,9 +8,8 @@
 <title>TASKS</title>
 </head>
 <body>
-	<jsp:include page="../header.jsp" />
-	<h2>Welcome ${sessionScope.loggedUser.name}, here are all of your
-		tasks</h2>
+	<jsp:include page="header.jsp" />
+	<h2>-> ALL TASKS</h2>
 
 <button onclick="document.getElementById('addTaskForm').style.display = 'block' ">Create</button> <br>
 
@@ -30,6 +29,8 @@
 </select>
 <input type="submit" value="Submit" onclick="document.getElementById('addTaskForm').style.display = 'none' ">
 </form> <br>
+
+<c:if test="${not empty allTasks}">
 
 
 	<table border="1">
@@ -57,6 +58,12 @@
 		</c:forEach>
 	</table>
 
+
+</c:if>
+
+<c:if test="${empty allTasks}">
+    <h2>${error}</h2>
+</c:if>
 
 </body>
 </html>

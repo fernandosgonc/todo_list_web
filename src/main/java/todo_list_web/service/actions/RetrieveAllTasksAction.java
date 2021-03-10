@@ -22,12 +22,11 @@ public class RetrieveAllTasksAction implements Action {
 		List<Task> allTasks = new TaskDAO().retrieveAllFromUser(currentUser);
 		List<Agenda> allAgendas = new AgendaDAO().retrieveAll(currentUser);
 		
-		if(allTasks!=null && allAgendas!=null) {
 			req.setAttribute("allTasks", allTasks);
 			req.setAttribute("allAgendas", allAgendas);
-		}
+			req.setAttribute("error", "You don't have any tasks");
 		
-		return "/WEB-INF/allTasks.jsp";
+		return "allTasks";
 		
 		
 	}

@@ -39,7 +39,7 @@ public class AddTaskAction implements Action{
 		TaskDAO dao = new TaskDAO();
 		dao.add(task, agenda);
 		
-		return "open?agenda_id="+agendaId;
+		return "viewAgenda?agenda_id="+agendaId;
 		
 	}
 

@@ -9,15 +9,22 @@
     <title>Register</title>
 </head>
 <body>
-    <jsp:include page="header.jsp"/>
+
+<a href="welcome.jsp">HOME</a>
+<a href="signin.jsp">SIGN IN</a>
+
+<hr>
+  
+  
+  
 <h2>
     Register in our system in order to get access to it.
 </h2>
 
-<form action="signup" method="POST">
+<form action="mvc/signup" method="POST">
     Name: <input type="text" name="name"><br>
     Email: <input type="text" name="email"><br>
-    Username: <input type="text" name="username"><br>
+    Username: <input type="text" name="login"><br>
     Password: <input type="password" name="password"><br>
     Gender: <select name="gender" id="gdrSelect"><br>
         <option value="M">Masculine</option>

@@ -9,7 +9,7 @@
 <title>TASK</title>
 </head>
 <body>
-	<jsp:include page="../header.jsp" />
+	<jsp:include page="header.jsp" />
 
 			<button onclick="document.getElementById('editTaskForm').style.display = 'block' ">Edit</button>
 			<a href="delete?task_id=${task.id}">Delete</a>

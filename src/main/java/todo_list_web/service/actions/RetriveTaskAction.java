@@ -32,7 +32,7 @@ public class RetriveTaskAction implements Action{
 			req.setAttribute("allAgendas", allAgendas);
 		}
 		
-		return "/WEB-INF/viewTask.jsp";
+		return "viewTask";
 	}
 
 }

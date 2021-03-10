@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import todo_list_web.model.User;
 
-@WebFilter(urlPatterns = {"/mvc/agendas"})
+@WebFilter(urlPatterns = {"/mvc/agendas", "/mvc/allTasks", "/mvc/viewAgenda", "/mvc/viewTask"})
 public class SessionFilter implements Filter{
 
 	@Override

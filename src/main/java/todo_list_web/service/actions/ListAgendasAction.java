@@ -19,13 +19,11 @@ public class ListAgendasAction implements Action{
 		User owner = (User) req.getSession().getAttribute("loggedUser");
 		List<Agenda> list =  dao.retrieveAll(owner);
 		
-		if(list!=null) {
+
 			req.setAttribute("listAgendas", list);
-			return "/WEB-INF/agendas.jsp";
-		}else {
 			req.setAttribute("error", "You don't have any agendas");
-			return "home.jsp";
-		}
+			return "agendas";
+
 	}
 	
 

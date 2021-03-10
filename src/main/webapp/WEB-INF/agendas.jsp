@@ -9,7 +9,7 @@
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-
+<h2>-> AGENDAS</h2>
 <button onclick="document.getElementById('createForm').style.display = 'block' ">Create</button> <br>
 
 <form id="createForm" action="createAgenda" style="display: none" method="post">
@@ -17,7 +17,7 @@
 <input type="submit" value="Submit" onclick="document.getElementById('createForm').style.display = 'none' ">
 </form> 
 
-
+	<c:if test="${not empty listAgendas}">
 
 
 	<table border="1">
@@ -31,12 +31,17 @@
 				<td>${agenda.id}</td>
 				<td>${agenda.name}</td>
 				<td>${agenda.creationDate}</td>
-				<td><a href="open?agenda_id=${agenda.id}">Open</a></td>
-				<!--  <td><a href="edit?agenda_id=${agenda.id}">Edit</a></td>
-				<td><a href="deleteAgenda?agenda_id=${agenda.id}">Delete</a></td>-->
+				<td><a href="viewAgenda?agenda_id=${agenda.id}">Open</a></td>
 			</tr>
 		</c:forEach>
 	</table>
+
+
+</c:if>
+
+<c:if test="${empty listAgendas}">
+    <h2>${error}</h2>
+</c:if>
 
 </body>
 </html>

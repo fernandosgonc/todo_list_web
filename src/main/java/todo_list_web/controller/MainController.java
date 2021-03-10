@@ -29,13 +29,15 @@ public class MainController extends HttpServlet {
 			System.out.println("Page: " + page);
 
 			
-			if(req.isRequestedSessionIdValid()) {				
-				req.getRequestDispatcher(page).forward(req, resp);
-			}else {
-				resp.sendRedirect(page);
-			}
-			
-//			resp.sendRedirect(page);
+			if (page.equals(req.getPathInfo().substring(1))) {
+				System.out.println("req dispat");
+	            req.getRequestDispatcher("/WEB-INF/" + page + ".jsp").forward(req, resp);
+	        }
+	        else {
+	        	System.out.println("redirect");
+	            resp.sendRedirect(page);
+	        }
+
 
 		} catch (Exception e) {
 			throw new ServletException("A logica de negocios causou uma exececao", e);
@@ -56,11 +58,7 @@ public class MainController extends HttpServlet {
 			String page = action.execute(req, resp);
 			System.out.println("Page: " + page);
 
-			if (page.contains("/WEB-INF/")) {
-				req.getRequestDispatcher(page).forward(req, resp);
-			} else {
 				resp.sendRedirect(page);
-			}
 
 		} catch (Exception e) {
 			throw new ServletException("A logica de negocios causou uma exececao", e);

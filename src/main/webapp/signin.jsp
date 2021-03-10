@@ -8,6 +8,11 @@
 </head>
 <body>
 
+<a href="welcome.jsp">HOME</a>
+<a href="signup2.jsp">SIGN UP</a>
+
+<hr>
+
 <form action="mvc/signin" method="post">
 Login: <input type="text" name="login"> <br>
 Password: <input type="text" name="password">

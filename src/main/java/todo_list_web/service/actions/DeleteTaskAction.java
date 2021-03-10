@@ -23,7 +23,7 @@ public class DeleteTaskAction implements Action {
 		Agenda agenda = dao.retrieveAgendaRelatedToTask(task);
 		dao.delete(taskId);
 		
-		return "open?agenda_id="+agenda.getId();
+		return "viewAgenda?agenda_id="+agenda.getId();
 		
 		
 		

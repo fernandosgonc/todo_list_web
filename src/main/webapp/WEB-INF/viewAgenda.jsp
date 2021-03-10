@@ -43,6 +43,7 @@
 <input type="submit" value="Submit" onclick="document.getElementById('addForm').style.display = 'none' ">
 </form> 
 
+<c:if test="${not empty taskList}">
 <table border="1">
 		<tr>
 			<th>ID</th>
@@ -69,6 +70,12 @@
 			</tr>
 		</c:forEach>
 	</table>
+	
+	</c:if>
+	
+	<c:if test="${empty taskList}">
+    <h2>${error}</h2>
+</c:if>
 
 </body>
 </html>

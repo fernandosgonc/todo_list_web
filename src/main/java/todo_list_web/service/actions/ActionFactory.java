@@ -12,19 +12,22 @@ public class ActionFactory {
 	static {
 		System.out.println("Map chamado");
 		map.put("GET/home", new HomeAction());
-		map.put("POST/signin", new LoginAction());
+		map.put("GET/signin", new LoginAction());
 		map.put("GET/signout", new SignOutAction());
 		map.put("GET/agendas", new ListAgendasAction());
-		map.put("POST/createAgenda", new CreateAgendaAction());
 		map.put("GET/deleteAgenda", new DeleteAgendaAction());
 		map.put("GET/edit", new PrepareEditAction());
-		map.put("POST/editAgenda", new EditAgendaAction());
-		map.put("GET/open", new OpenAgendaAction());
-		map.put("POST/editTask", new EditTaskAction());
+		map.put("GET/viewAgenda", new ViewAgendaAction());
 		map.put("GET/delete", new DeleteTaskAction());
-		map.put("POST/addTask", new AddTaskAction());
 		map.put("GET/viewTask", new RetriveTaskAction());
 		map.put("GET/allTasks", new RetrieveAllTasksAction());
+		
+		map.put("POST/createAgenda", new CreateAgendaAction());
+		map.put("POST/editAgenda", new EditAgendaAction());
+		map.put("POST/signin", new LoginAction());
+		map.put("POST/signup", new SignUpAction());
+		map.put("POST/editTask", new EditTaskAction());
+		map.put("POST/addTask", new AddTaskAction());
 		
 		
 		

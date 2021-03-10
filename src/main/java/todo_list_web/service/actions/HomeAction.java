@@ -15,9 +15,9 @@ public class HomeAction implements Action{
 		User currentUser = (User) req.getSession().getAttribute("loggedUser");
 		
 		if(currentUser!=null) {
-			return "/WEB-INF/welcome.jsp";
+			return "home";
 		}else {
-			return "../homepage2.jsp";
+			return "../welcome.jsp";
 		}
 		
 	}
