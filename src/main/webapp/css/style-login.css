@@ -9,8 +9,12 @@ body {
    
 }
 
+h1 {
+    color: whitesmoke;
+}
+
 header {
-    background-color: #9ad3bc;
+    background-color: #28527a;
     text-align: center;
     padding: 3rem 3rem 5rem;
 }
@@ -30,8 +34,7 @@ header {
 }
 
 #nav a:hover {
-    background-color: #f3eac2;
-    color: #2e7f8f;
+    color: #8ac4d0;
   }
 
 .container {
@@ -54,15 +57,16 @@ header {
 .container input[type=submit] {
     padding: 0.8rem;
     margin: 2rem 0 0 0;
-    background-color: rgba(65, 105, 225, 0.555);
-    color: navy;
+    background-color: #28527a;
+    color: whitesmoke;
     font-weight: bold;
+    cursor: pointer;
 
 }
 
 .container input[type=submit]:hover {
-    color:rgb(214, 229, 247);
-    background-color: rgba(42, 89, 230, 0.863);
+    color: black;
+    background-color: #8ac4d0;
   }
 
 .container p{
@@ -70,6 +74,13 @@ header {
     font-size: 20px;
     margin-bottom: 1rem;
 }
+
+.container select {
+	padding: 0.5rem;
+	background-color: whitesmoke;
+	border-radius: 0.5rem;
+}
+
 
 footer #dev {
     color: #28527a;

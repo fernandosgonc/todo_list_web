@@ -41,8 +41,8 @@
 
 			<form id="editAgendaForm" action="editAgenda" style="display: none"
 				method="post">
-				<input type="hidden" name="agenda_id" value="${agenda.id}">
-				<input type="text" name="name"> <input type="submit"
+				<input type="hidden" name="agenda_id" value="${agenda.id}" >
+				<input type="text" name="name" placeholder="New Name"> <input type="submit"
 					value="Submit"
 					onclick="document.getElementById('editAgendaForm').style.display = 'none' ">
 			</form>

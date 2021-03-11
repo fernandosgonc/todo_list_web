@@ -30,7 +30,7 @@
 
 	<main>
 	
-	<div class="container">
+	<div id="content" class="container">
 	
 	
 	<form id="editTaskForm" action="editTask" method="post"

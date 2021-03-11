@@ -15,12 +15,12 @@
 <body>
 
 	
-    <header>
+    <header id="welcome-header">
         <h1>WELCOME TO OUR SYSTEM! :)</h1>
     </header>
 
     <main>
-    <div class="container">
+    <div class="container" id="welcome-container">
         <p><a href="signup2.jsp">Register</a> <br> OR<br> <a href="signin.jsp">Sign In</a><br> in order to get access to it.</p>
     </div>
         

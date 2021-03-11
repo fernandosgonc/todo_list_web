@@ -35,7 +35,7 @@
 
 			<form id="createForm" action="createAgenda" style="display: none"
 				method="post">
-				<input type="text" name="name"> <input type="submit"
+				<input type="text" name="name" placeholder="New Agenda"> <input type="submit"
 					value="Submit"
 					onclick="document.getElementById('createForm').style.display = 'none' ">
 			</form>

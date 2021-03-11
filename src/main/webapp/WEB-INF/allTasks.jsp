@@ -24,7 +24,7 @@
 
 	<main>
 
-		<div class="container">
+		<div class="container" id="content">
 
 			<form id="addTaskForm" action="addTask" style="display: none"
 				method="post">
