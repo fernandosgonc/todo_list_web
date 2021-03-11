@@ -4,18 +4,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<title>Insert title here</title>
 </head>
 <body>
 
-	<header>
-	<div id="navBar">
-	<a href="home">HOME</a>
-	<a href="agendas">AGENDAS</a>
-	<a href="allTasks">TASKS</a>
-	<a href="signout">SIGN OUT</a>
-	</div>
-	<hr>
-	</header>
+<p id="dev">developed by: fernandosgonc</p>
 
 </body>
 </html>

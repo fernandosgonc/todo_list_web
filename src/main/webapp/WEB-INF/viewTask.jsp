@@ -7,74 +7,97 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>TASK</title>
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-	<jsp:include page="header.jsp" />
 
-			<button onclick="document.getElementById('editTaskForm').style.display = 'block' ">Edit</button>
-			<a href="delete?task_id=${task.id}">Delete</a>
+	<header>
+		<%@ include file="header.jsp"%>
+		
+		<h2 id="currentPage">TASK INFO</h2>
+
+		<div id="obj-crud">
+			<button
+				onclick="document.getElementById('editTaskForm').style.display = 'block' ">Edit</button>
+			<a href="delete?task_id=${task.id}"><i class="material-icons">delete</i></a>
+		</div>
+
+
 		<hr>
+	</header>
 
-	<table border="1">
+	<main>
 	
-		
+	<div class="container">
 	
-		<tr>
-			<td>Name</td>
-			<td>${task.name}</td>
+	
+	<form id="editTaskForm" action="editTask" method="post"
+			style="display: none">
+			<input type="hidden" name="id" value="${task.id}"> Name: <input
+				type="text" name="name"> <br> Category: <input
+				type="text" name="category"> <br> Deadline: <input
+				type="text" name="deadline"> <br> Status: <select
+				name="status">
+				<option value="0">Undone</option>
+				<option value="1">Done</option>
+			</select> <select name="agenda">
+				<c:forEach var="ag" items="${allAgendas}">
+					<option value="${ag.id}">${ag.name}</option>
+				</c:forEach>
+			</select> <input type="submit" value="Submit"
+				onclick="document.getElementById('editAgendaForm').style.display = 'none' ">
+		</form>
 
-		</tr>
+		<table id="data-table">
 
-		<tr>
-			<td>Category</td>
-			<td>${task.category}</td>
+			<thead>
+			</thead>
 
-		</tr>
+			<tbody>
+				<tr>
+					<td>Name</td>
+					<td>${task.name}</td>
 
-		<tr>
-			<td>Deadline</td>
-			<td>${task.deadline}</td>
+				</tr>
 
-		</tr>
+				<tr>
+					<td>Category</td>
+					<td>${task.category}</td>
 
-		<tr>
-			<td>Status</td>
-			<c:if test="${task.done}">
-				<td>Done</td>
-			</c:if>
-			<c:if test="${task.done == false}">
-				<td>Undone</td>
-			</c:if>
-		</tr>
-		
-		<tr>
-			<td>Agenda</td>
-			<td>${agenda.name}</td>
+				</tr>
 
-		</tr>
-	</table>
+				<tr>
+					<td>Deadline</td>
+					<td>${task.deadline}</td>
 
-<br>
+				</tr>
+
+				<tr>
+					<td>Status</td>
+					<c:if test="${task.done}">
+									<td><i class="material-icons" style="color: #00af91">done</i></td>
+								</c:if>
+								<c:if test="${task.done == false}">
+									<td><i class="material-icons" style="color: crimson">close</i></td>
+								</c:if>
+				</tr>
+
+				<tr>
+					<td>Agenda</td>
+					<td>${agenda.name}</td>
+
+				</tr>
+			</tbody>
+		</table>
 
 
+	</div>
+	</main>
 
-	<form id="editTaskForm" action="editTask" method="post" style="display: none" >
-		<input type="hidden"  name="id" value="${task.id}">
-		Name: <input type="text" name="name"> <br> 
-		Category: <input type="text" name="category"> <br> 
-		Deadline: <input type="text" name="deadline"> <br> 
-		Status: <select	name="status">
-			<option value="0">Undone</option>
-			<option value="1">Done</option>
-		</select>
-		<select name="agenda">
-			<c:forEach var="ag" items="${allAgendas}">
-				<option value="${ag.id}">${ag.name}</option>
-			</c:forEach>
-		</select>
-		
-		<input type="submit" value="Submit" onclick="document.getElementById('editAgendaForm').style.display = 'none' ">
-	</form>
-
+	<footer>
+		<%@ include file="../footer.jsp"%>
+	</footer>
 </body>
 </html>
