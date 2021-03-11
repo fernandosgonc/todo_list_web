@@ -29,7 +29,7 @@
                 <form action="mvc/signin" method="post">
                     <label for="Login">Login</label><br>
                     <input id="login" name="login" type="text" placeholder="Email" required><br>
-                    <label for="Password"></label>Password</span><br>
+                    <label for="Password">Password</label><br>
                     <input id="txtPassword" type="password" name="password" placeholder="Password" required><br>
                     <input type="submit" value="Login">
                 </form>

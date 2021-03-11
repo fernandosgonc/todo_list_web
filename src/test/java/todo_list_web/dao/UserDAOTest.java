@@ -2,11 +2,9 @@ package todo_list_web.dao;
 
 
 import java.sql.SQLException;
-import java.util.List;
 
 import org.junit.Test;
 
-import todo_list_web.model.Agenda;
 import todo_list_web.model.User;
 import todo_list_web.util.BCrypt;
 

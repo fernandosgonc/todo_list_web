@@ -1,14 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@	taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ include file="../template.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>A G E N D A S</title>
-<link href="../css/style.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<title>AGENDAS</title>
 
 </head>
 <body>
@@ -20,7 +18,7 @@
 
 		<div id="obj-crud">
 			<button
-				onclick="document.getElementById('createForm').style.display = 'block' ">Create</button>
+				onclick="hideAndShowForm('createForm')">Create</button>
 		</div>
 		<hr>
 

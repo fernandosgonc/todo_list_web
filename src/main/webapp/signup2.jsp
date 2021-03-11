@@ -26,11 +26,11 @@
 
 
 		<form action="mvc/signup" method="POST">
-			Name: <input type="text" name="name"><br> Email: <input
-				type="text" name="email"><br> Username: <input
-				type="text" name="login"><br> Password: <input
-				type="password" name="password"><br> Gender: <select
-				name="gender" id="gdrSelect"><br>
+			Name: <input type="text" name="name" required><br> Email: <input
+				type="text" name="email" required><br> Username: <input
+				type="text" name="login" required><br> Password: <input
+				type="password" name="password" required><br> Gender: <select
+				name="gender" id="gdrSelect">
 				<option value="M">Masculine</option>
 				<option value="F">Feminine</option>
 				<option value="O">Other</option>

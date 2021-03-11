@@ -14,6 +14,11 @@ import todo_list_web.service.actions.ActionFactory;
 @WebServlet("/mvc/*")
 public class MainController extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

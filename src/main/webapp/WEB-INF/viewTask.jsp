@@ -1,15 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@	taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ include file="../template.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>TASK</title>
-<link href="../css/style.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 </head>
 <body>
 
@@ -20,7 +18,7 @@
 
 		<div id="obj-crud">
 			<button
-				onclick="document.getElementById('editTaskForm').style.display = 'block' ">Edit</button>
+				onclick="hideAndShowForm('editTaskForm')">Edit</button>
 			<a href="delete?task_id=${task.id}"><i class="material-icons">delete</i></a>
 		</div>
 
@@ -42,7 +40,7 @@
 				name="status">
 				<option value="0">Undone</option>
 				<option value="1">Done</option>
-			</select> <select name="agenda">
+			</select> <br> Agenda: <select name="agenda">
 				<c:forEach var="ag" items="${allAgendas}">
 					<option value="${ag.id}">${ag.name}</option>
 				</c:forEach>
