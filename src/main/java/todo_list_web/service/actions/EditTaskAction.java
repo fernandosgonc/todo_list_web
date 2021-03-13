@@ -2,6 +2,7 @@ package todo_list_web.service.actions;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,8 +18,12 @@ public class EditTaskAction implements Action {
 		
 		Integer taskId = Integer.parseInt(req.getParameter("id"));
 		String taskName = req.getParameter("name");
-		LocalDate deadline = LocalDate.parse(req.getParameter("deadline"));
 		String category = req.getParameter("category");
+		
+		String txtDeadline = req.getParameter("deadline");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate deadline = LocalDate.parse(txtDeadline, formatter);
+		
 		char status = req.getParameter("status").charAt(0);
 		Integer agendaId = Integer.parseInt(req.getParameter("agenda"));
 		

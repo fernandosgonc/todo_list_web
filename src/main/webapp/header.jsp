@@ -13,8 +13,11 @@
 	<a href="agendas">AGENDAS</a>
 	<a href="allTasks">TASKS</a>
 	<a href="signout">SIGN OUT</a>
+	<p id="dev">developed by: fernandosgonc</p>
 	</div>
 	<hr>
+	
+	
 	</header>
 
 </body>

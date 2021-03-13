@@ -26,6 +26,8 @@ a:hover {
 	padding: 2.5rem;
 }
 
+
+
 header #navBar {
 	background-color: #28527a;
 	padding: 1.5rem;
@@ -41,6 +43,17 @@ header #navBar a {
 
 header #navBar a:hover {
 	color: #8ac4d0;
+}
+
+header #navBar #dev, #welcome-header #dev{
+	background-color: #28527a;
+	color: #dfdfdf;
+	right: 0;
+	top: 0;
+	padding: 1rem;
+	text-align: right;
+	position: absolute;
+	font-size: small;
 }
 
 a:active {
@@ -166,11 +179,3 @@ table tbody tr td .material-icons, table tbody tr td a {
 	background-color: rgba(255, 255, 255, 0.800);
 }
 
-footer p{
-	color: #28527a;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	padding: 1rem;
-	text-align: right;
-}

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@ include file="../template.jsp" %>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -18,6 +17,7 @@
 
 	<header id="welcome-header">
 		<h1>WELCOME TO OUR SYSTEM! :)</h1>
+		<p id="dev">developed by: fernandosgonc</p>
 		<hr>
 	</header>
 
@@ -35,7 +35,6 @@
 
 
 	<footer>
-		<%@ include file="footer.jsp"%>
 	</footer>
 </body>
 

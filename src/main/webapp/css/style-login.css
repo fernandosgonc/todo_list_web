@@ -38,6 +38,7 @@ header {
 	color: #8ac4d0;
 }
 
+
 #nav a:active {
 	box-shadow: none;
 	top: 5px;
@@ -92,12 +93,14 @@ header {
 	border-radius: 0.5rem;
 }
 
-footer #dev {
+footer #dev{
+	background-color: #f3eac2;
 	color: #28527a;
+	right: 0;
+	bottom: 0;
+	padding: 1rem;
 	text-align: right;
 	position: absolute;
-	right: 0.5rem;
-	bottom: 0;
-	width: 100%;
-	height: 2.5rem;
+	font-size: small;
 }
+

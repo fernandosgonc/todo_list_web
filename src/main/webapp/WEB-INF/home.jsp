@@ -11,7 +11,6 @@
 <body>
 
 	<header>
-		<%@ include file="header.jsp"%>
 
 		<h1>Welcome, ${sessionScope.loggedUser.name}</h1>
 	</header>
@@ -22,7 +21,6 @@
 
 
 	<footer>
-		<%@ include file="../footer.jsp"%>
 	</footer>
 
 </body>

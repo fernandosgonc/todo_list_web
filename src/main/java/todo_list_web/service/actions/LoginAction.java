@@ -29,16 +29,14 @@ public class LoginAction implements Action {
 		String hashedPassword = password;
 		if(salt!=null) {
 			hashedPassword = BCrypt.hashpw(password, salt);	
-		}else {
-			System.out.println("usuario nao encontrado");
-		}
-		
+		}		
 		User user = userDAO.verifyLogin(login, hashedPassword);
 		
 		if(user!=null) {
 			req.getSession().setAttribute("loggedUser", user);
 			return "home";
 		}else {
+			req.setAttribute("error", "Username/password incorrect.");
 			return req.getContextPath()+"/signin.jsp";
 		}
 		

@@ -2,6 +2,7 @@ package todo_list_web.service.actions;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +17,11 @@ public class AddTaskAction implements Action{
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws SQLException, Exception {
 		
 		String taskName = req.getParameter("name");
-		LocalDate deadline = LocalDate.parse(req.getParameter("deadline"));
+		
+		String txtDeadline = req.getParameter("deadline");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate deadline = LocalDate.parse(txtDeadline, formatter);
+		
 		String category = req.getParameter("category");
 		char status = req.getParameter("status").charAt(0);
 		Integer agendaId = Integer.parseInt(req.getParameter("agenda"));

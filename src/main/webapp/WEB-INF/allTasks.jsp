@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@	taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 <%@ include file="../template.jsp" %>
 <!DOCTYPE html>
 <html>
@@ -12,7 +13,6 @@
 <body>
 
 	<header>
-		<%@ include file="header.jsp"%>
 		<h2 id="currentPage">ALL TASKS</h2>
 		<div id="obj-crud">
 			<button
@@ -64,7 +64,7 @@
 									<td>${task.id}</td>
 									<td>${task.name}</td>
 									<td>${task.category}</td>
-									<td>${task.deadline}</td>
+									<td><tags:localDate date="${task.deadline}"/></td>
 									<c:if test="${task.done}">
 										<td><i class="material-icons" style="color: #00af91">done</i></td>
 									</c:if>
@@ -91,7 +91,6 @@
 
 
 	<footer>
-		<%@ include file="../footer.jsp"%>
 	</footer>
 </body>
 </html>

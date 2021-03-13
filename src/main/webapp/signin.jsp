@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@	taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     <!DOCTYPE html>
     <html>
 
@@ -11,8 +12,7 @@
 
     <body>
 
-
-        <header>
+		<header>
             <div id="nav">
                 <a href="welcome.jsp">HOME</a>
                 <a href="signup2.jsp">SIGN UP</a>
@@ -20,8 +20,7 @@
             <hr>
             <h1>SIGN IN</h1>
         </header>
-
-        <main>
+		<main>
 
             <div class="container">
 
@@ -36,13 +35,9 @@
 
             </div>
         </main>
-
-
-
-        <footer id="dev">
-            <%@ include file="footer.jsp" %>
+		<footer id="dev">
+            <p id="dev">developed by: fernandosgonc</p>
         </footer>
-
-    </body>
+</body>
 
     </html>

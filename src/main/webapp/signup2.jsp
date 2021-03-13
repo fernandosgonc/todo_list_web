@@ -40,7 +40,7 @@
 </main>
 
 <footer>
-	<jsp:include page="footer.jsp"/>
+	<p id="dev">developed by: fernandosgonc</p>
 </footer>
 
 </body>

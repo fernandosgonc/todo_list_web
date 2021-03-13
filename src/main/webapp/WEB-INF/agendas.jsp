@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@	taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 <%@ include file="../template.jsp" %>
 <!DOCTYPE html>
 <html>
@@ -13,7 +14,7 @@
 
 	<header>
 
-		<%@ include file="header.jsp"%>
+		
 		<h2 id="currentPage">AGENDAS</h2>
 
 		<div id="obj-crud">
@@ -56,7 +57,7 @@
 								<tr>
 									<td>${agenda.id}</td>
 									<td>${agenda.name}</td>
-									<td>${agenda.creationDate}</td>
+									<td><tags:localDate date="${agenda.creationDate}"/></td>
 									<td><a href="viewAgenda?agenda_id=${agenda.id}"><i
 											class="material-icons">view_list</i></a></td>
 								</tr>
@@ -76,7 +77,6 @@
 	</main>
 
 	<footer>
-		<%@ include file="../footer.jsp"%>
 	</footer>
 
 </body>
