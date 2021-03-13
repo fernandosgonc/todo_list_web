@@ -7,6 +7,7 @@
         <meta charset="ISO-8859-1">
         <title>Sign in</title>
         <link href="css/style-login.css" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="<c:url value='/favicon.ico'/>" />
 
     </head>
 
