@@ -10,7 +10,6 @@ public class ActionFactory {
 	private static Map<String, Action> map = new HashMap<String, Action>();
 	
 	static {
-		System.out.println("Map chamado");
 		map.put("GET/home", new HomeAction());
 		map.put("GET/signin", new LoginAction());
 		map.put("GET/signout", new SignOutAction());
