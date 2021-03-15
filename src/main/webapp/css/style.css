@@ -7,6 +7,10 @@
 	text-align: center;
 }
 
+h1, h2 {
+	margin: 2rem 5rem 2rem;
+	color: #28527a;
+}
 
 a {
 	color: #28527a;
@@ -19,12 +23,15 @@ a:hover {
 	color: #8ac4d0;
 }
 
-#welcome-header, #welcome-header h1{
+
+
+#welcome-header, #welcome-header h1,#welcome-header h2 {
 	background-color: #28527a;
 	color: whitesmoke;
 	margin: 0 0 1.5rem;
 	padding: 2.5rem;
 }
+
 
 
 
@@ -72,10 +79,7 @@ a:active {
 	border-radius: 0.5rem;
 }
 
-h1, h2 {
-	margin: 2rem 5rem 2rem;
-	color: #28527a;
-}
+
 
 #currentPage {
 	font-style: italic;

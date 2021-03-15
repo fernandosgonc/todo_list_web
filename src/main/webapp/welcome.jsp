@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -17,9 +17,10 @@
 
 
 	<header id="welcome-header">
-		<h1>WELCOME TO OUR SYSTEM! :)</h1>
-		<p id="dev">developed by: fernandosgonc</p>
+		<h1>TAS.K.IT</h1>
 		<hr>
+		<h2>WELCOME TO OUR SYSTEM! :)</h2>
+		<p id="dev">developed by: fernandosgonc</p>
 	</header>
 
 	<main>
@@ -35,8 +36,7 @@
 	</main>
 
 
-	<footer>
-	</footer>
+	<footer> </footer>
 </body>
 
 </html>
