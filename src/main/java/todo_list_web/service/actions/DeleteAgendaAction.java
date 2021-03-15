@@ -1,5 +1,6 @@
 package todo_list_web.service.actions;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +17,8 @@ public class DeleteAgendaAction implements Action{
 			
 			Integer agendaId = Integer.parseInt(req.getParameter("agenda_id"));
 			
-			AgendaDAO dao = new AgendaDAO();
+			Connection connection = (Connection) req.getAttribute("connection");
+			AgendaDAO dao = new AgendaDAO(connection);
 			dao.delete(agendaId);
 			
 			return "agendas";

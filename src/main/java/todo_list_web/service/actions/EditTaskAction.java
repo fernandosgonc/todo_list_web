@@ -1,5 +1,6 @@
 package todo_list_web.service.actions;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -43,7 +44,9 @@ public class EditTaskAction implements Action {
 		Agenda agenda = new Agenda();
 		agenda.setId(agendaId);
 		
-		TaskDAO dao = new TaskDAO();
+		
+		Connection connection = (Connection) req.getAttribute("connection");
+		TaskDAO dao = new TaskDAO(connection);
 		dao.update(task, agenda);
 		
 		return "viewTask?task_id="+taskId;

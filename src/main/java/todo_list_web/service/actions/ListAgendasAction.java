@@ -1,5 +1,6 @@
 package todo_list_web.service.actions;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -15,7 +16,8 @@ public class ListAgendasAction implements Action{
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws SQLException, Exception {
 		
-		AgendaDAO dao = new AgendaDAO();
+		Connection connection = (Connection) req.getAttribute("connection");
+		AgendaDAO dao = new AgendaDAO(connection);
 		User owner = (User) req.getSession().getAttribute("loggedUser");
 		List<Agenda> list =  dao.retrieveAll(owner);
 		

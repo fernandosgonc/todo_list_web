@@ -1,11 +1,13 @@
 package todo_list_web.dao;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 
 import org.junit.Test;
 
+import todo_list_web.factory.ConnectionFactory;
 import todo_list_web.model.Agenda;
 import todo_list_web.model.Task;
 
@@ -21,9 +23,9 @@ public class TaskDAOTest {
 		t.setDeadline(LocalDate.now().plusDays(3));
 		t.setCategory("SouTop");
 		t.setDone(false);
-
-		TaskDAO dao = new TaskDAO();
 		try {
+			Connection connection = ConnectionFactory.getConnection();
+			TaskDAO dao = new TaskDAO(connection);
 			dao.add(t, a);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -36,8 +38,10 @@ public class TaskDAOTest {
 	public void retrieveTest() {
 		int id = 11;
 
-		TaskDAO dao = new TaskDAO();
 		try {
+			Connection connection = ConnectionFactory.getConnection();
+
+			TaskDAO dao = new TaskDAO(connection);
 			Task t = dao.retrieve(id);
 			System.out.println(t);
 		} catch (SQLException e) {
@@ -52,7 +56,8 @@ public class TaskDAOTest {
 		Agenda a = new Agenda();
 		a.setId(6);
 		try {
-			List<Task> list = new TaskDAO().retrieveAllFromAgenda(a);
+			Connection connection = ConnectionFactory.getConnection();
+			List<Task> list = new TaskDAO(connection).retrieveAllFromAgenda(a);
 
 			for (Task t : list) {
 				System.out.println(t);
@@ -75,15 +80,16 @@ public class TaskDAOTest {
 
 		Agenda a = new Agenda();
 		a.setId(9);
-		TaskDAO dao = new TaskDAO();
 		try {
+			Connection connection = ConnectionFactory.getConnection();
+			TaskDAO dao = new TaskDAO(connection);
 			dao.update(t, a);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException();
 		}
 	}
-	
+
 	@Test
 	public void editStatusTest() {
 
@@ -91,8 +97,9 @@ public class TaskDAOTest {
 		t.setId(11);
 		t.setDone(true);
 
-		TaskDAO dao = new TaskDAO();
 		try {
+			Connection connection = ConnectionFactory.getConnection();
+			TaskDAO dao = new TaskDAO(connection);
 			dao.editStatus(t);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -104,8 +111,9 @@ public class TaskDAOTest {
 	public void deleteTest() {
 
 		int id = 10;
-		TaskDAO dao = new TaskDAO();
 		try {
+			Connection connection = ConnectionFactory.getConnection();
+			TaskDAO dao = new TaskDAO(connection);
 			dao.delete(id);
 		} catch (SQLException e) {
 			e.printStackTrace();

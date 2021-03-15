@@ -1,5 +1,6 @@
 package todo_list_web.service.actions;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +20,8 @@ public class DeleteTaskAction implements Action {
 		Task task = new Task();
 		task.setId(taskId);
 		
-		TaskDAO dao = new TaskDAO();
+		Connection connection = (Connection) req.getAttribute("connection");
+		TaskDAO dao = new TaskDAO(connection);
 		Agenda agenda = dao.retrieveAgendaRelatedToTask(task);
 		dao.delete(taskId);
 		

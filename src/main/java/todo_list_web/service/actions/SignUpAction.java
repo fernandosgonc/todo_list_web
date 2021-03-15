@@ -1,5 +1,6 @@
 package todo_list_web.service.actions;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +32,9 @@ public class SignUpAction implements Action {
 		user.setGender(gender.charAt(0));
 		user.setSalt(salt);
 		
-		UserDAO userDAO = new UserDAO();
+		Connection connection = (Connection) req.getAttribute("connection");
+		
+		UserDAO userDAO = new UserDAO(connection);
 		
 		
 		userDAO.add(user);

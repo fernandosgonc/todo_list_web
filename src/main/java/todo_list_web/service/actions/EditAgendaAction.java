@@ -1,5 +1,6 @@
 package todo_list_web.service.actions;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +21,8 @@ public class EditAgendaAction implements Action{
 		agenda.setId(agendaId);
 		agenda.setName(agendaName);
 		
-		AgendaDAO dao = new AgendaDAO();
+		Connection connection = (Connection) req.getAttribute("connection");
+		AgendaDAO dao = new AgendaDAO(connection);
 		dao.edit(agenda);
 		
 		return "viewAgenda?agenda_id="+agendaId;

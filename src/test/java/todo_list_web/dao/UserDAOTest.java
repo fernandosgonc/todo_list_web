@@ -1,10 +1,12 @@
 package todo_list_web.dao;
 
 
+import java.sql.Connection;
 import java.sql.SQLException;
 
 import org.junit.Test;
 
+import todo_list_web.factory.ConnectionFactory;
 import todo_list_web.model.User;
 import todo_list_web.util.BCrypt;
 
@@ -24,8 +26,8 @@ public class UserDAOTest {
 
 		UserDAO dao;
 		try {
-
-			dao = new UserDAO();
+			Connection con = ConnectionFactory.getConnection();
+			dao = new UserDAO(con);
 			dao.add(u);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -41,7 +43,8 @@ public class UserDAOTest {
 
 		UserDAO dao;
 		try {
-			dao = new UserDAO();
+			Connection con = ConnectionFactory.getConnection();
+			dao = new UserDAO(con);
 			u = dao.searchById(id);
 
 		} catch (SQLException e) {
@@ -60,7 +63,8 @@ public class UserDAOTest {
 		
 		UserDAO dao;
 		try {
-			dao = new UserDAO();
+			Connection con = ConnectionFactory.getConnection();
+			dao = new UserDAO(con);
 			u = dao.verifyLogin(login, password);
 			System.out.println(u);
 		} catch (SQLException e) {
@@ -83,8 +87,8 @@ public class UserDAOTest {
 
 		UserDAO dao;
 		try {
-
-			dao = new UserDAO();
+			Connection con = ConnectionFactory.getConnection();
+			dao = new UserDAO(con);
 			dao.edit(u);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -99,8 +103,8 @@ public class UserDAOTest {
 		
 		UserDAO dao;
 		try {
-
-			dao = new UserDAO();
+			Connection con = ConnectionFactory.getConnection();
+			dao = new UserDAO(con);
 			dao.delete(id);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -112,10 +116,13 @@ public class UserDAOTest {
 	public void getSaltTest() {
 		
 		String login = "jeff2";
-		UserDAO dao = new UserDAO();
+		Connection con;
 		try {
+			con = ConnectionFactory.getConnection();
+			UserDAO dao = new UserDAO(con);
 			String sal = dao.getSalt(login);
 			System.out.println(sal);
+		
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException();

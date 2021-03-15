@@ -1,5 +1,6 @@
 package todo_list_web.service.actions;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -19,8 +20,10 @@ public class RetrieveAllTasksAction implements Action {
 		
 		User currentUser = (User) req.getSession().getAttribute("loggedUser");
 		
-		List<Task> allTasks = new TaskDAO().retrieveAllFromUser(currentUser);
-		List<Agenda> allAgendas = new AgendaDAO().retrieveAll(currentUser);
+		Connection connection = (Connection) req.getAttribute("connection");
+		List<Task> allTasks = new TaskDAO(connection).retrieveAllFromUser(currentUser);
+		
+		List<Agenda> allAgendas = new AgendaDAO(connection).retrieveAll(currentUser);
 		
 			req.setAttribute("allTasks", allTasks);
 			req.setAttribute("allAgendas", allAgendas);

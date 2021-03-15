@@ -1,11 +1,13 @@
 package todo_list_web.dao;
 
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
 import org.junit.Test;
 
+import todo_list_web.factory.ConnectionFactory;
 import todo_list_web.model.Agenda;
 import todo_list_web.model.User;
 
@@ -19,8 +21,9 @@ public class AgendaDAOTest {
 		u.setId(10);
 		a.setName("Teste4");
 		
-		AgendaDAO adao = new AgendaDAO();
 		try {
+		Connection con = ConnectionFactory.getConnection();
+		AgendaDAO adao = new AgendaDAO(con);
 			adao.create(a, u);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -35,8 +38,9 @@ public class AgendaDAOTest {
 	public void testDelete() {
 		
 		int id = 5;
-		AgendaDAO dao = new AgendaDAO();
 		try {
+			Connection con = ConnectionFactory.getConnection();
+			AgendaDAO dao = new AgendaDAO(con);
 			dao.delete(id);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -52,8 +56,9 @@ public class AgendaDAOTest {
 		ag.setName("Test");
 		ag.setId(8);
 		
-		AgendaDAO dao = new AgendaDAO();
 		try {
+			Connection con = ConnectionFactory.getConnection();
+			AgendaDAO dao = new AgendaDAO(con);
 			dao.edit(ag);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -68,7 +73,8 @@ public class AgendaDAOTest {
 		u.setId(10);
 		
 		try {
-			List<Agenda> list = new AgendaDAO().retrieveAll(u);
+			Connection con = ConnectionFactory.getConnection();
+			List<Agenda> list = new AgendaDAO(con).retrieveAll(u);
 			
 			for(Agenda a : list) {
 				System.out.println(a);
@@ -88,7 +94,8 @@ public class AgendaDAOTest {
 	
 		
 		try {
-			Agenda a = new AgendaDAO().retrieve(8);
+			Connection con = ConnectionFactory.getConnection();
+			Agenda a = new AgendaDAO(con).retrieve(8);
 			
 				System.out.println(a);
 			

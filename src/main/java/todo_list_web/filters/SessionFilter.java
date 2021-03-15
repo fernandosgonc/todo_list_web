@@ -22,7 +22,7 @@ public class SessionFilter implements Filter{
 	public void init(FilterConfig filterConfig) throws ServletException {
 		
 		
-		System.out.println("PASSANDO NO FILTRO");
+		System.out.println("Init Session Filter");
 		
 	}
 
@@ -47,7 +47,7 @@ public class SessionFilter implements Filter{
 	@Override
 	public void destroy() {
 		
-		System.out.println("SAINDO NO FILTRO");
+		System.out.println("Destroy Session Filter");
 		
 	}
 

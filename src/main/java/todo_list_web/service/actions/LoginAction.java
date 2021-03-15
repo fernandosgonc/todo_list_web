@@ -1,5 +1,6 @@
 package todo_list_web.service.actions;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,13 +24,17 @@ public class LoginAction implements Action {
 		String login = req.getParameter("login");
 		String password = req.getParameter("password");
 		
-		UserDAO userDAO = new UserDAO();
+		Connection connection = (Connection) req.getAttribute("connection");
+		System.out.println("ESTADO CONEXAO ->"+connection.isClosed());
+		UserDAO userDAO = new UserDAO(connection);
 		String salt = userDAO.getSalt(login);
 		
 		String hashedPassword = password;
 		if(salt!=null) {
 			hashedPassword = BCrypt.hashpw(password, salt);	
 		}		
+		
+		System.out.println("ESTADO CONEXAO ->"+connection.isClosed());
 		User user = userDAO.verifyLogin(login, hashedPassword);
 		
 		if(user!=null) {

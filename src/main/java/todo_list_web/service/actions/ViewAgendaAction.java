@@ -1,5 +1,6 @@
 package todo_list_web.service.actions;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -21,9 +22,11 @@ public class ViewAgendaAction implements Action {
 		Agenda agenda = new Agenda();
 		agenda.setId(agendaId);
 
-		agenda = new AgendaDAO().retrieve(agendaId);
+		
+		Connection connection = (Connection) req.getAttribute("connection");
+		agenda = new AgendaDAO(connection).retrieve(agendaId);
 
-		List<Task> taskList = new TaskDAO().retrieveAllFromAgenda(agenda);
+		List<Task> taskList = new TaskDAO(connection).retrieveAllFromAgenda(agenda);
 
 		req.setAttribute("agenda", agenda);
 		req.setAttribute("taskList", taskList);

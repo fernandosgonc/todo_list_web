@@ -15,11 +15,14 @@ import todo_list_web.model.User;
 
 public class TaskDAO {
 
-	private Connection con = null;
+	private Connection con;
+
+	public TaskDAO(Connection con) {
+		this.con = con;
+	}
 
 	public void add(Task task, Agenda agenda) throws SQLException {
 
-		con = ConnectionFactory.getConnection();
 		String sql = "insert into task (task_name, deadline, status, category, agenda_id) values (?, ?, ?, ?, ?)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, task.getName());
@@ -34,14 +37,9 @@ public class TaskDAO {
 		if (ps != null) {
 			ps.close();
 		}
-		if (con != null) {
-			con.close();
-		}
 	}
 
 	public Task retrieve(Integer id) throws SQLException {
-
-		con = ConnectionFactory.getConnection();
 
 		String sql = "select * from task where task_id=?";
 		PreparedStatement ps = con.prepareStatement(sql);
@@ -65,17 +63,12 @@ public class TaskDAO {
 		if (ps != null) {
 			ps.close();
 		}
-		if (con != null) {
-			con.close();
-		}
 
 		return t;
 
 	}
 
 	public List<Task> retrieveAllFromAgenda(Agenda agenda) throws SQLException {
-
-		con = ConnectionFactory.getConnection();
 
 		String sql = "select t.task_id, t.task_name, t.deadline, t.category, t.status from task t join agenda a on t.agenda_id = a.agenda_id where a.agenda_id=?";
 		PreparedStatement ps = con.prepareStatement(sql);
@@ -101,17 +94,12 @@ public class TaskDAO {
 		if (ps != null) {
 			ps.close();
 		}
-		if (con != null) {
-			con.close();
-		}
 
 		return list;
 
 	}
-	
-	public List<Task> retrieveAllFromUser(User owner) throws SQLException {
 
-		con = ConnectionFactory.getConnection();
+	public List<Task> retrieveAllFromUser(User owner) throws SQLException {
 
 		String sql = "select t.task_id, t.task_name, t.category, t.deadline, t.status from task t join agenda a on t.agenda_id = a.agenda_id join user u on a.user_id = u.user_id where u.user_id=?";
 		PreparedStatement ps = con.prepareStatement(sql);
@@ -137,48 +125,37 @@ public class TaskDAO {
 		if (ps != null) {
 			ps.close();
 		}
-		if (con != null) {
-			con.close();
-		}
 
 		return list;
 
 	}
 
-	
-public Agenda retrieveAgendaRelatedToTask(Task task) throws SQLException {
-	con = ConnectionFactory.getConnection();
+	public Agenda retrieveAgendaRelatedToTask(Task task) throws SQLException {
 
-	String sql = "select a.agenda_id, a.agenda_name from agenda a join task t on t.agenda_id = a.agenda_id where t.task_id=?";
-	PreparedStatement ps = con.prepareStatement(sql);
-	ps.setInt(1, task.getId());
+		String sql = "select a.agenda_id, a.agenda_name from agenda a join task t on t.agenda_id = a.agenda_id where t.task_id=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, task.getId());
 
-	ResultSet rs = ps.executeQuery();
+		ResultSet rs = ps.executeQuery();
 
-	Agenda agenda = null;
-	if(rs.next()) {
-		agenda = new Agenda();
-		agenda.setId(rs.getInt("agenda_id"));
-		agenda.setName(rs.getString("agenda_name"));
-	}
-	
+		Agenda agenda = null;
+		if (rs.next()) {
+			agenda = new Agenda();
+			agenda.setId(rs.getInt("agenda_id"));
+			agenda.setName(rs.getString("agenda_name"));
+		}
 
-	if (rs != null) {
-		rs.close();
-	}
-	if (ps != null) {
-		ps.close();
-	}
-	if (con != null) {
-		con.close();
+		if (rs != null) {
+			rs.close();
+		}
+		if (ps != null) {
+			ps.close();
+		}
+
+		return agenda;
 	}
 
-	return agenda;
-}
-	
 	public void update(Task task, Agenda newAgenda) throws SQLException {
-
-		con = ConnectionFactory.getConnection();
 
 		String sql = "update task set task_name=?, category=?, deadline=?, status=?, agenda_id=? where task_id=?";
 		PreparedStatement ps = con.prepareStatement(sql);
@@ -190,63 +167,48 @@ public Agenda retrieveAgendaRelatedToTask(Task task) throws SQLException {
 		ps.setInt(6, task.getId());
 
 		int rows = ps.executeUpdate();
-		System.out.println(rows+" affected");
+		System.out.println(rows + " affected");
 
 		if (ps != null) {
 			ps.close();
 		}
-		if (con != null) {
-			con.close();
-		}
 
 	}
-	
-	
+
 	public void editStatus(Task task) throws SQLException {
-		
-		con = ConnectionFactory.getConnection();
 
 		String sql = "update task set status=? where task_id=?";
 		PreparedStatement ps = con.prepareStatement(sql);
-		
+
 		boolean done = false;
-		if(!task.isDone()) {
-			done=true;
+		if (!task.isDone()) {
+			done = true;
 		}
 		ps.setBoolean(1, done);
 		ps.setInt(2, task.getId());
-		
+
 		int rows = ps.executeUpdate();
-		System.out.println(rows+" affected");
+		System.out.println(rows + " affected");
 
 		if (ps != null) {
 			ps.close();
 		}
-		if (con != null) {
-			con.close();
-		}
 
 	}
-	
-	
-	public void delete(Integer id) throws SQLException {
 
-		con = ConnectionFactory.getConnection();
+	public void delete(Integer id) throws SQLException {
 
 		String sql = "delete from task where task_id=?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, id);
 
 		int rows = ps.executeUpdate();
-		System.out.println(rows+" affected");
+		System.out.println(rows + " affected");
 
 		if (ps != null) {
 			ps.close();
 		}
-		if (con != null) {
-			con.close();
-		}
 
 	}
-	
+
 }
