@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@	taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
-<%@ include file="../template.jsp" %>
+<%@ include file="/template.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>

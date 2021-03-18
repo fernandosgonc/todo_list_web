@@ -13,7 +13,7 @@ import javax.servlet.annotation.WebFilter;
 
 import todo_list_web.factory.ConnectionFactory;
 
-@WebFilter("/mvc/*")
+@WebFilter("/*")
 public class ConnectionFilter implements javax.servlet.Filter{
 
 	@Override
