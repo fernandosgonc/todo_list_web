@@ -47,7 +47,7 @@ Under construction... :hammer:
 - URL handling with servlets/jsp pages
 - Design the controller to be a single servlet
 
-#### P.S.: I intend to implement this webapp using Spring MVC in near future
+#### P.S.: I intend to implement this webapp using the Spring Framework in near future
 
 
 
