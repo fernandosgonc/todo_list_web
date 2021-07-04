@@ -13,6 +13,7 @@ public class ConnectionFactory {
 	
 	private static Connection connection = null;
 	
+	@SuppressWarnings("deprecation")
 	public static Connection getConnection() throws SQLException {
 		if(connection == null || connection.isClosed()) {
 			try {

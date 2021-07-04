@@ -8,7 +8,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import todo_list_web.factory.ConnectionFactory;
 import todo_list_web.model.Agenda;
 import todo_list_web.model.Task;
 import todo_list_web.model.User;

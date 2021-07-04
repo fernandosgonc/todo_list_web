@@ -4,8 +4,6 @@ package todo_list_web.dao;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import org.junit.Test;
-
 import todo_list_web.factory.ConnectionFactory;
 import todo_list_web.model.User;
 import todo_list_web.util.BCrypt;
