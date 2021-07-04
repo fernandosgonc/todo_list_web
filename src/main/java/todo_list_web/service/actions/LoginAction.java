@@ -22,16 +22,21 @@ public class LoginAction implements Action {
 		String login = req.getParameter("login");
 		String password = req.getParameter("password");
 		
+		User user = new User();
+		user.setLogin(login);
+		user.setPassword(password);
+		
 		Connection connection = (Connection) req.getAttribute("connection");
 		UserDAO userDAO = new UserDAO(connection);
-		String salt = userDAO.getSalt(login);
+		String salt = userDAO.getSalt(user);
 		
 		String hashedPassword = password;
 		if(salt!=null) {
 			hashedPassword = BCrypt.hashpw(password, salt);	
+			user.setPassword(hashedPassword);
 		}		
 		
-		User user = userDAO.verifyLogin(login, hashedPassword);
+		user = userDAO.verifyLogin(user);
 		
 		if(user!=null) {
 			req.getSession().setAttribute("loggedUser", user);

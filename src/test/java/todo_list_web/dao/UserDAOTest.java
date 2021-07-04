@@ -55,23 +55,6 @@ public class UserDAOTest {
 		System.out.println(u.toString());
 	}
 
-//	@Test
-	public void testSearch() {
-		String login = "fernandosgonc";
-		String password = "";
-		User u = null;
-		
-		UserDAO dao;
-		try {
-			Connection con = ConnectionFactory.getConnection();
-			dao = new UserDAO(con);
-			u = dao.verifyLogin(login, password);
-			System.out.println(u);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new RuntimeException();
-		}
-	}
 	
 	public void testEdit() {
 		String salt = BCrypt.gensalt();
@@ -112,22 +95,6 @@ public class UserDAOTest {
 		}
 	}
 	
-	@Test
-	public void getSaltTest() {
-		
-		String login = "jeff2";
-		Connection con;
-		try {
-			con = ConnectionFactory.getConnection();
-			UserDAO dao = new UserDAO(con);
-			String sal = dao.getSalt(login);
-			System.out.println(sal);
-		
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new RuntimeException();
-		}
-	}
 	
 	
 	

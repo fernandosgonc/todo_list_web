@@ -9,7 +9,7 @@ public class ConnectionFactory {
 	
 	private static final String url = "jdbc:mysql://localhost/todo_listdb";
 	private static final String user = "root";
-	private static final String password = "9959";
+	private static final String password = "6370";
 	
 	private static Connection connection = null;
 	
